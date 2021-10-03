@@ -4,13 +4,9 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-   let postsDt = [
-        {id: 1, message: 'Hi, how are you?!', likesCount: '23'},
-        {id: 2, message: 'It s my first post!', likesCount: 78},
-        {id: 3, message: 'Yo Bro!', likesCount: 23}
-    ]
     let postsElements =
-        postsDt.map(pst => <Post message={pst.message} likesCount={pst.likesCount}/>);
+        props.postsDt.map(pst => <Post message={pst.message} likesCount={pst.likesCount}/>);
+   /* через props.postsDt приходят нужные данные сверху (цепочка MyPost\Profile\App\index.js */
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>

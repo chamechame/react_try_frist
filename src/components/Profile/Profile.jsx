@@ -6,16 +6,12 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
 
-    let postsDt = [
-        {id: 1, message: 'Hi, how are you?!', likesCount: '23'},
-        {id: 2, message: 'It s my first post!', likesCount: 78},
-        {id: 3, message: 'Yo Bro!', likesCount: 23}
-    ]
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts postsDt={props.postsDt}/>
+          {/* помечаем в Профайле в виде параметров <MyPosts postsDt и отправляем дальше в MyPosts*/}
         </div>
     )
 }
