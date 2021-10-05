@@ -12,5 +12,5 @@ const Post = (props) => {
         </div>
     </div>
 }
-
+/*  тут аватарка постов*/
 export default Post;

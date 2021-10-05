@@ -23,7 +23,16 @@ let state = {
             {id: 5, name: 'Petro'},
             {id: 6, name: 'Natasha'}
         ]
+    },
+    sidebar: {
+        friends: [
+            {id: 1, name: 'Dimych'},
+            {id: 2, name: 'Sasha'},
+            {id: 3, name: 'Vaysa'}
+        ]
     }
 }
 
-export default state
+export default state;
+/*
+тут мы просто группируем и упаковываем данные Не ООП объект просто объект с данными*/

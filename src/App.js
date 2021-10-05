@@ -14,17 +14,16 @@ const App = (props) => {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar state={props.state.friends}/>
                 <div class='app-wrapper-content'>
-                    <Route path='/Dialogs'
-                           render={() => <Dialogs state={props.state.dialogsPage} />}/>
-                    <Route path='/Profile'
-                           render={() => <Profile state={props.state.profilePage}/>}/>
+                    <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                    <Route path='/Profile' render={() => <Profile state={props.state.profilePage}/>}/>
                     <Route path='/News' render={() => <News/>}/>
                     <Route path='/Musics' render={() => <Musics/>}/>
                     <Route path='/Settings' render={() => <Settings/>}/>
                 </div>
             </div>
+       {/*     Эта часть отображается везде */}
         </BrowserRouter>);
 }
 export default App;
