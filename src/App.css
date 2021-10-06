@@ -4,10 +4,11 @@
   width: 1200px;
   grid-template-areas:
           "h h"
-          "n c";
-  grid-template-rows: 60px 1fr;
+          "n c"
+          "v c";
+  grid-template-rows: 60px 1fr 2fr;
   grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
+
 }
 
 .app-wrapper-content {

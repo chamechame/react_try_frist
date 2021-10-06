@@ -20,7 +20,6 @@ const MyPosts = (props) => {
             </div>
             <div className={s.posts}>
                 {postsElements}
-                <Post/>
             </div>
         </div>
     )
