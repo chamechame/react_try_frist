@@ -12,8 +12,10 @@ const Dialogs = (props) => {
     return (
         <BrowserRouter>
             <div className={s.dialogs}>
-                <div className={s.dialogsItems}>
-                    {dialogsElements}
+                <div className={s.item}>
+                    <div className={s.dialogsItems}>
+                        {dialogsElements}
+                    </div>
                 </div>
                 <div className={s.messages}>
                     {messagesElements}

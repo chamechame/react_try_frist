@@ -12,7 +12,6 @@ import FriendsBar from "./components/Navbar/FriendsBar/FriendsBar";
 
 const App = (props) => {
     return (
-        <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
@@ -23,11 +22,10 @@ const App = (props) => {
                     <Route path='/News' render={() => <News/>}/>
                     <Route path='/Musics' render={() => <Musics/>}/>
                     <Route path='/Settings' render={() => <Settings/>}/>
-
                 </div>
-
             </div>
-            {/*     Эта часть отображается везде */}
-        </BrowserRouter>);
+            /*     Эта часть отображается везде */
+)
+
 }
 export default App;
