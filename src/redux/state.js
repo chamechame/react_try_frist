@@ -9,11 +9,11 @@ let state = {
     },
     dialogsPage: {
         messDt: [
-            {id: 1, message: 'Hi!'},
-            {id: 2, message: 'How is your chame-it?!'},
-            {id: 3, message: 'Yo Bro!'},
-            {id: 4, message: 'Yo Bro!'},
-            {id: 5, message: 'Yo Bro!'}
+            {id: 1, message: ['Hi!']},
+            {id: 2, message: ['How is your chame-it?!']},
+            {id: 3, message: ['Yo Bro! 3']},
+            {id: 4, message: ['Yo Bro! 4']},
+            {id: 5, message: ['Yo Bro! 5']}
         ],
         dialDt: [
             {id: 1, name: 'Dimych'},
@@ -32,6 +32,19 @@ let state = {
         ]
     }
 }
+
+export let addPost = (postMessage) => {
+
+    let newPost = {
+        id: 4,
+        message: postMessage,
+        likesCount: 0
+    };
+
+    state.profilePage.postsDt.push(newPost);
+}
+
+
 
 export default state;
 /*
