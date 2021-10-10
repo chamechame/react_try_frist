@@ -7,6 +7,7 @@ const MyPosts = (props) => {
     let addPost = () => {
         let text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value = '';
     }
 /*--вверху приходит из state функция(addPost) добавления данных в массив PostDt- активируется по нажатии кнопки--*/
 

@@ -1,3 +1,5 @@
+import {renderRender} from "../render";
+
 let state = {
 
     profilePage: {
@@ -42,9 +44,8 @@ export let addPost = (postMessage) => {
     };
 
     state.profilePage.postsDt.push(newPost);
+    renderRender(state);
 }
-
-
 
 export default state;
 /*

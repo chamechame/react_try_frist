@@ -13,20 +13,21 @@ import FriendsBar from "./components/Navbar/FriendsBar/FriendsBar";
 
 const App = (props) => {
     return (
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-               <FriendsBar state={props.state.sidebar}/>
-                <div class='app-wrapper-content'>
-                    <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-                    <Route path='/Profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
-                    <Route path='/News' render={() => <News/>}/>
-                    <Route path='/Musics' render={() => <Musics/>}/>
-                    <Route path='/Settings' render={() => <Settings/>}/>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <FriendsBar state={props.state.sidebar}/>
+            <div class='app-wrapper-content'>
+                <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                <Route path='/Profile'
+                       render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                <Route path='/News' render={() => <News/>}/>
+                <Route path='/Musics' render={() => <Musics/>}/>
+                <Route path='/Settings' render={() => <Settings/>}/>
             </div>
-            /*     Эта часть отображается везде */
-)
+        </div>
+        /*     Эта часть отображается везде */
+    )
 
 }
 export default App;
