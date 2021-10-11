@@ -7,7 +7,10 @@ let state = {
             {id: 1, message: 'Hi, how are you?!', likesCount: '23'},
             {id: 2, message: 'It s my first post!', likesCount: 78},
             {id: 3, message: 'Yo Bro!', likesCount: 23}
-        ]
+        ],
+        postSvText: 'Сюда можно писать текст'
+
+
     },
     dialogsPage: {
         messDt: [
@@ -35,17 +38,26 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+window.state = state;
 
+export let addPost = () => {
+/*функция addPost уходит в MyPost через пропсы и работает при нажатии onClick*/
     let newPost = {
         id: 4,
-        message: postMessage,
+        message: state.profilePage.postSvText,  /*тянет текст из postSvText*/
         likesCount: 0
     };
 
-    state.profilePage.postsDt.push(newPost);
+    state.profilePage.postsDt.push(newPost); /*тут мы добавляем в массив данные*/
+    state.profilePage.postSvText = '';
     renderRender(state);
 }
+
+export let updatePostText = (newText) => {
+    state.profilePage.postSvText = newText;
+    renderRender(state);
+}
+
 
 export default state;
 /*
