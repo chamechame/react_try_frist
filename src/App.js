@@ -21,7 +21,7 @@ const App = (props) => {
                 <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                 <Route path='/Profile'
                        render={() => <Profile
-                           state={props.state.profilePage}
+                           state={props.state.profilePage}  /*передаем данные в т.ч. и postSvText*/
                            addPost={props.addPost}
                            updatePostText={props.updatePostText}
                        />}/>

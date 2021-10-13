@@ -1,4 +1,6 @@
-import {renderRender} from "../render";
+let renderRender = ()=>{  /*3. пустая функция в которую кладутся данные с observer пришедшии с index */
+                            /*переопределение пустной ф-ии на данные с subscribe renderRender*/
+}
 
 let state = {
 
@@ -40,8 +42,8 @@ let state = {
 
 window.state = state;
 
-export let addPost = () => {
-/*функция addPost уходит в MyPost через пропсы и работает при нажатии onClick*/
+export const addPost = () => {
+    /*функция addPost уходит в MyPost через пропсы и работает при нажатии onClick*/
     let newPost = {
         id: 4,
         message: state.profilePage.postSvText,  /*тянет текст из postSvText*/
@@ -49,15 +51,18 @@ export let addPost = () => {
     };
 
     state.profilePage.postsDt.push(newPost); /*тут мы добавляем в массив данные*/
-    state.profilePage.postSvText = '';
+    state.profilePage.postSvText = ''; /* обнуляем видимое поле после добавления*/
     renderRender(state);
 }
 
-export let updatePostText = (newText) => {
-    state.profilePage.postSvText = newText;
+export const updatePostText = (newText) => {   /*учесть это отдельная компонента стейта кладет в параметр*/
+    state.profilePage.postSvText = newText;    /* текст с  postSvText и передает в MyPost*/
     renderRender(state);
 }
 
+export const subscribe = (observer) => {  /* 2. приходит в обсервер renderRender из Index и присваюивается observer*/
+    renderRender = observer;        /* 2.1 Просто в компененту renderRender из State кладем данные с обсервер*/
+}
 
 export default state;
 /*

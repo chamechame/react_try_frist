@@ -4,15 +4,16 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-    let newPostElement = React.createRef();
+    let newPostElement = React.createRef(); /* React.createRef()  создает новую ссылку*/
     let addPost = () => {
-/*        let text = newPostElement.current.value;*/ /*код кладет то что написали*/
+
         props.addPost();
         props.updatePostText(''); /*Зануляем строку text area после добавления текста addPost*/
     }
     let addOnChange = ()=>{
         let text = newPostElement.current.value;
-        props.updatePostText(text);                 /**/  /*приходит в пропсках со стейта*/
+        /*код кладет то что написали*/
+        props.updatePostText(text);   /**/  /*текст приходит в пропсках со стейта*/
 
     }
 
@@ -20,7 +21,7 @@ const MyPosts = (props) => {
 
     let postsElements =
         props.postsDt.map(pst => <Post message={pst.message} likesCount={pst.likesCount}/>);
-    /* через props.postsDt приходят нужные данные сверху (цепочка MyPost\Profile\App\index.js */
+    /*  */
 
     return (
         <div className={s.postsBlock}>
@@ -28,7 +29,8 @@ const MyPosts = (props) => {
             <div>
                 <div>
                     <textarea onChange={addOnChange} name=""  ref={newPostElement} value={props.postSvText}/>
-                    {/* onChange при любом взаимодействии понимает изменения и рендерит в стейте */}
+                    {/* onChange при любом взаимодействии и вводе текста понимает изменения
+                    и рендерит в STATE А value берет из textarea текст и помещает в стейт в объект*/}
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
