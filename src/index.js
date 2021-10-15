@@ -11,11 +11,10 @@ export let renderRender = (state) => {    /*Как??*?*?**/
         <BrowserRouter>
             <App
                 state={state}
-                addPost={store.addPost.bind(store)}
-                updatePostText={store.updatePostText.bind(store)}
+                dispatch={store.dispatch.bind(store)}
             />
         </BrowserRouter>, document.getElementById('root'));
-}  /*выше отрисовывается все в UI*/
+}  /*выше renderRender отрисовывает все в UI*/
 
 renderRender(store.getState());
 
