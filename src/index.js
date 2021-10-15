@@ -1,26 +1,25 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import state, {subscribe} from "./redux/state";
+import store  from "./redux/state";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import {addPost, updatePostText} from "./redux/state";
 
-export let renderRender = () => {
+export let renderRender = (state) => {    /*Как??*?*?**/
     ReactDOM.render(
         <BrowserRouter>
             <App
                 state={state}
-                addPost={addPost}
-                updatePostText={updatePostText}
+                addPost={store.addPost.bind(store)}
+                updatePostText={store.updatePostText.bind(store)}
             />
         </BrowserRouter>, document.getElementById('root'));
 }  /*выше отрисовывается все в UI*/
 
-renderRender(state);
+renderRender(store.getState());
 
-subscribe(renderRender); /* 1. голимый callback мы вызвали функцию из мира стейт и положили РендерРендер в параметры ее*/
+store.subscribe(renderRender); /* 1. голимый callback мы вызвали функцию из мира стейт и положили РендерРендер в параметры ее*/
                             /*через  ф-ю subscribe мы передает renderRender для перерисовки в State, точнее */
                             /*subscribe приходит из state и хватает в себя renderRender*/
 reportWebVitals();

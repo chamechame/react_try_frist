@@ -6,7 +6,6 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef(); /* React.createRef()  создает новую ссылку*/
     let addPost = () => {
-
         props.addPost();
         props.updatePostText(''); /*Зануляем строку text area после добавления текста addPost*/
     }

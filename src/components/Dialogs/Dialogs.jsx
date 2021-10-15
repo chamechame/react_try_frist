@@ -37,7 +37,6 @@ const Dialogs = (props) => {
                 <div>
                     <div className={s.messages}>
                         {resultArray}
-{/*                        {messagesElements}*/}
                     </div>
                 </div>
                 <textarea name="" cols="75" rows="5" ref={newPostMessages}></textarea>
