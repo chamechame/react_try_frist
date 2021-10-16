@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, updNewPostTextActionCreator} from "../../../redux/state";
+import {addPostActionCreator, updNewPostTextActionCreator} from "../../../redux/profilePage-reducer";
 
 const MyPosts = (props) => {
     let postsElements =
@@ -10,7 +10,7 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef(); /* React.createRef()  создает новую ссылку*/
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.dispatch(addPostActionCreator());  //dispatch вызывает тут callback
     }
     let addOnChange = () => {
         let text = newPostElement.current.value;        /*код кладет то что написали*/

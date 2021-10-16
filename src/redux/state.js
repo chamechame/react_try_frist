@@ -1,8 +1,9 @@
 /*БЛОК type констант*/
-const ADD_POST = 'ADD-POST';
-const UPD_NEW_POST_TEXT = 'UPD-NEW-POST-TEXT';
-const UPD_NEW_MESSAGE_BODY = 'UPD-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+import profilePageReducer from "./profilePage-reducer";
+import dialogsPageReducer from "./dialogsPage-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
+
 
 let store = {
     _callSubscriber() { /*3. пустая функция в которую кладутся данные с observer пришедшии с index */
@@ -51,41 +52,23 @@ let store = {
     getState() {
         return this._state;
     },
+
     subscribe(observer) {  /* 2. приходит в обсервер renderRender из Index и присваюивается observer*/
         this._callSubscriber = observer;     /* 2.1 Просто в компененту renderRender из State кладем данные с обсервер*/
 
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 4,
-                message: this._state.profilePage.postSvText,  /*тянет текст из postSvText*/
-                likesCount: 0
-            };
-            this._state.profilePage.postsDt.push(newPost); /*тут мы добавляем в массив данные*/
-            this._state.profilePage.postSvText = ''; /* обнуляем видимое поле после добавления*/
-            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
-        } else if (action.type === UPD_NEW_POST_TEXT) {
-            this._state.profilePage.postSvText = action.newText;    /* текст с  postSvText и передает в MyPost*/
-            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
-        } else if (action.type === UPD_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
-        } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.messDt.push({id: 6, message: body});
-            this._state.dialogsPage.newMessageBody = '';
+
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
             this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
         }
-    }
+
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST}) /*после рефакторинга убрали return/ функция возвращает action*/
-export const updNewPostTextActionCreator = (text) => ({type: UPD_NEW_POST_TEXT, newText: text}) /*для UI чтоб создавался action*/
-
-export const sendMessageCreator = () => ({type: SEND_MESSAGE}) /*после рефакторинга убрали return/ функция возвращает action*/
-export const updateNewMessageBodyCreator = (textBody) => ({type: UPD_NEW_MESSAGE_BODY, body: textBody}) /*для UI чтоб создавался action*/
 
 export default store;
 window.store = store;
