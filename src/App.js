@@ -18,7 +18,7 @@ const App = (props) => {
             <Navbar/>
             <FriendsBar state={props.state.sidebar}/>
             <div class='app-wrapper-content'>
-                <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                <Route path='/Dialogs' render={() => <Dialogs store={props.store}/>}/>
                 <Route path='/Profile'
                        render={() => <Profile
                            profilePage={props.state.profilePage}  /*передаем данные в т.ч. и postSvText*/

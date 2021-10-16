@@ -12,6 +12,7 @@ export let renderRender = (state) => {    /*Как??*?*?**/
             <App
                 state={state}
                 dispatch={store.dispatch.bind(store)}
+                store={store}
             />
         </BrowserRouter>, document.getElementById('root'));
 }  /*выше renderRender отрисовывает все в UI*/

@@ -1,6 +1,8 @@
 /*БЛОК type констант*/
 const ADD_POST = 'ADD-POST';
 const UPD_NEW_POST_TEXT = 'UPD-NEW-POST-TEXT';
+const UPD_NEW_MESSAGE_BODY = 'UPD-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
     _callSubscriber() { /*3. пустая функция в которую кладутся данные с observer пришедшии с index */
@@ -33,7 +35,8 @@ let store = {
                 {id: 4, name: 'Valery'},
                 {id: 5, name: 'Petro'},
                 {id: 6, name: 'Natasha'}
-            ]
+            ],
+            newMessageBody: ''
         },
         sidebar: {
             friends: [
@@ -62,31 +65,27 @@ let store = {
             };
             this._state.profilePage.postsDt.push(newPost); /*тут мы добавляем в массив данные*/
             this._state.profilePage.postSvText = ''; /* обнуляем видимое поле после добавления*/
-            this._callSubscriber(this._state);
-
-        } else if (action.type === 'UPD-NEW-POST-TEXT') {
+            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
+        } else if (action.type === UPD_NEW_POST_TEXT) {
             this._state.profilePage.postSvText = action.newText;    /* текст с  postSvText и передает в MyPost*/
-            this._callSubscriber(this._state);
+            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
+        } else if (action.type === UPD_NEW_MESSAGE_BODY) {
+            this._state.dialogsPage.newMessageBody = action.body;
+            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogsPage.newMessageBody;
+            this._state.dialogsPage.messDt.push({id: 6, message: body});
+            this._state.dialogsPage.newMessageBody = '';
+            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
         }
     }
 }
 
-/*export const addPostActionCreator = () => {
-    return {
-        type: 'ADD-POST'        было
-    }*/
-/*export const addPostActionCreator = () => {    /!*функция возвращает action*!/
-    return {
-        type: ADD_POST
-    }
-}*/
+export const addPostActionCreator = () => ({type: ADD_POST}) /*после рефакторинга убрали return/ функция возвращает action*/
+export const updNewPostTextActionCreator = (text) => ({type: UPD_NEW_POST_TEXT, newText: text}) /*для UI чтоб создавался action*/
 
-export const addPostActionCreator = () => ({type:ADD_POST}) /*после рефакторинга убрали return/ функция возвращает action*/
-
-export const updNewPostTextActionCreator = (text) =>({type: UPD_NEW_POST_TEXT, newText: text})
-
-
-
+export const sendMessageCreator = () => ({type: SEND_MESSAGE}) /*после рефакторинга убрали return/ функция возвращает action*/
+export const updateNewMessageBodyCreator = (textBody) => ({type: UPD_NEW_MESSAGE_BODY, body: textBody}) /*для UI чтоб создавался action*/
 
 export default store;
 window.store = store;
