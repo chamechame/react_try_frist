@@ -1,6 +1,6 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import store  from "./redux/state";
+import store  from "./redux/redux-store";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -19,7 +19,11 @@ export let renderRender = (state) => {    /*Как??*?*?**/
 
 renderRender(store.getState());
 
-store.subscribe(renderRender); /* 1. голимый callback мы вызвали функцию из мира стейт и положили РендерРендер в параметры ее*/
+store.subscribe(()=> {
+    let state =store.getState();
+    renderRender(state);
+
+}); /* 1. голимый callback мы вызвали функцию из мира стейт и положили РендерРендер в параметры ее*/
                             /*через  ф-ю subscribe мы передает renderRender для перерисовки в State, точнее */
                             /*subscribe приходит из state и хватает в себя renderRender*/
 reportWebVitals();
