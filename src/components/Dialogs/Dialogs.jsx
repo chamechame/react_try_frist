@@ -7,36 +7,19 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialo
 
 
 const Dialogs = (props) => {
-    debugger
-    let state = props.store.getState().dialogsPage;
-
+    let state = props.dialogsPage;
     let dialogsElements = state.dialDt.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
     let messagesElements = state.messDt.map(message1 => <Message message={message1.message}/>);
     let newMessageBody = state.newMessageBody;
-    /*    let messagesElements = props.state.messDt.map(message1 => <Message message={message1.message}/>); 40 урок */
 
-    /*    __________________________________________________________________________*/
-    /*    let aa = window.location.search;
-        let bb = new URLSearchParams(aa);
-        let cc = bb.get('id');
-        let resultArray = [];
-        if (cc) {
-             resultArray = state.messDt.filter(x => x.id == cc);
-            if (resultArray[0]) resultArray = resultArray[0].message.map(x => <Message message={x}/>);
-        }*/
-    /*    __________________________________________________________________________*/
-    /*    задаем вывод сообщения в диалогах*/
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.sendMessage();
     }
+
     let onNewMessageChange = (e) => {
-        debugger
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));    /*() - обязательно вызываем updateNewMessageBodyCreator*/
+        props.updateNewMessagesBody(body);
     }
-
-
-    /*    __________________________________________________________________________*/
 
     return (
         <div className={s.dialogs}>
@@ -66,3 +49,16 @@ const Dialogs = (props) => {
 export default Dialogs;
 
 
+
+// после 15 строки
+/*    let messagesElements = props.state.messDt.map(message1 => <Message message={message1.message}/>); 40 урок */
+
+/*    __________________________________________________________________________*/
+/*    let aa = window.location.search;
+    let bb = new URLSearchParams(aa);
+    let cc = bb.get('id');
+    let resultArray = [];
+    if (cc) {
+         resultArray = state.messDt.filter(x => x.id == cc);
+        if (resultArray[0]) resultArray = resultArray[0].message.map(x => <Message message={x}/>);
+    }*/

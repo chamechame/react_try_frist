@@ -5,9 +5,7 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
     let postsElements =
         props.posts.map(pst => <Post message={pst.message} likesCount={pst.likesCount}/>);
-
     let newPostElement = React.createRef(); /* React.createRef()  создает новую ссылку*/
-
     let onAddPost = () => {
         props.addPost();
     }
@@ -15,7 +13,6 @@ const MyPosts = (props) => {
         let text = newPostElement.current.value;        /*код кладет то что написали*/
         props.updateNewPostText(text);  //вызов коллбэка через контейнерную компоненту
     }
-
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
