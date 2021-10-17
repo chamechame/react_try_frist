@@ -11,7 +11,6 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import FriendsBar from "./components/Navbar/FriendsBar/FriendsBar";
 
 const App = (props) => {
-debugger
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -21,8 +20,9 @@ debugger
                 <Route path='/Dialogs' render={() => <Dialogs store={props.store}/>}/>
                 <Route path='/Profile'
                        render={() => <Profile
-                           profilePage={props.state.profilePage}  /*передаем данные в т.ч. и postSvText*/
-                           dispatch={props.dispatch}
+                           store={props.store}
+/*                         profilePage={props.state.profilePage}  /!*передаем данные в т.ч. и postSvText*!/
+                           dispatch={props.dispatch}*/
                        />}/>
                 <Route path='/News' render={() => <News/>}/>
                 <Route path='/Musics' render={() => <Musics/>}/>
