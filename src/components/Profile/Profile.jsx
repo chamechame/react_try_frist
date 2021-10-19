@@ -11,7 +11,7 @@ const Profile = (props) => {
     return (
         <div className={s.profileItem}>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer /> {/*store={props.store}*/}
 
 {/*              posts={props.profilePage.postsDt}
                 postSvText={props.profilePage.postSvText}
