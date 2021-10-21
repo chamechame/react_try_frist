@@ -9,13 +9,14 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import FriendsBar from "./components/Navbar/FriendsBar/FriendsBar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import FriendsBarContainer from "./components/Navbar/FriendsBar/FriendsBarContainer";
 
 const App = (props) => {
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
-           {/* <FriendsBar /> state={props.state.sidebar}*/}
+           <FriendsBarContainer />  {/*state={props.state.sidebar}*/}
             <div class='app-wrapper-content'>
                 <Route path='/Dialogs' render={() => <DialogsContainer />}/> {/*store={props.store}*/}
                 <Route path='/Profile' render={() => <Profile />}/>   {/* store={props.store}*/}

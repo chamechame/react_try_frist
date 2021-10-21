@@ -11,6 +11,8 @@ let initialState = {
 };
 
 const profilePageReducer = (state = initialState, action) => {
+    let stateCopy = state;
+    
     switch (action.type) {
         case ADD_POST:
             let newPost = {

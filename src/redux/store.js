@@ -5,9 +5,9 @@ import sidebarReducer from "./sidebar-reducer";
 
 
 
-let store = {
-    _callSubscriber() { /*3. пустая функция в которую кладутся данные с observer пришедшии с index */
-        /*переопределение пустной ф-ии на данные с subscribe renderRender*/
+/*let store = {
+    _callSubscriber() { /!*3. пустая функция в которую кладутся данные с observer пришедшии с index *!/
+        /!*переопределение пустной ф-ии на данные с subscribe renderRender*!/
     },
 
     _state: {
@@ -53,8 +53,8 @@ let store = {
         return this._state;
     },
 
-    subscribe(observer) {  /* 2. приходит в обсервер renderRender из Index и присваюивается observer*/
-        this._callSubscriber = observer;     /* 2.1 Просто в компененту renderRender из State кладем данные с обсервер*/
+    subscribe(observer) {  /!* 2. приходит в обсервер renderRender из Index и присваюивается observer*!/
+        this._callSubscriber = observer;     /!* 2.1 Просто в компененту renderRender из State кладем данные с обсервер*!/
 
     },
 
@@ -64,10 +64,10 @@ let store = {
         this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-            this._callSubscriber(this._state);   /*переотрисовать после изменения данных*/
+            this._callSubscriber(this._state);   /!*переотрисовать после изменения данных*!/
         }
 
-}
+}*/
 
 
 //export default store;

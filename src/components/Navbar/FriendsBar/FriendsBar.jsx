@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './FriendsBar.module.css';
-import DialogItem from "../../Dialogs/DialogItem/DialogItem";
 import Friend from "./Friends/Friend";
 
 const FriendsBar = (props) => {
-    let friendsElementSideBar = props.state.friends.map(name2 => <Friend name={name2.name} id={name2.id}/>);
+
+    let friendsElementSideBar = props.posts.map(name2 => <Friend name={name2.name} id={name2.id}/>);
 
     return (
         <div  className={s.item}>
