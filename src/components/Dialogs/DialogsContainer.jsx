@@ -3,44 +3,6 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialo
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
-/*const DialogsContainer = (props) => {
-
-    /!*    let state = props.store.getState().dialogsPage;
-        /!*    задаем вывод сообщения в диалогах*!/
-        let onSendMessageClick = () => {
-            props.store.dispatch(sendMessageCreator());
-        }
-        let onNewMessageChange = (body) => {
-            props.store.dispatch(updateNewMessageBodyCreator(body));    /!*() - обязательно вызываем updateNewMessageBodyCreator*!/
-        }*!/
-
-    return (
-
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let state = store.getState().dialogsPage;
-                    /!*    задаем вывод сообщения в диалогах*!/
-                    let onSendMessageClick = () => {
-                        store.dispatch(sendMessageCreator());
-                    }
-                    let onNewMessageChange = (body) => {
-                        store.dispatch(updateNewMessageBodyCreator(body));    /!*() - обязательно вызываем updateNewMessageBodyCreator*!/
-                    }
-
-                    return (
-                        <Dialogs
-                            updateNewMessagesBody={onNewMessageChange}
-                            sendMessage={onSendMessageClick}
-                            dialogsPage={state}
-                        />)
-                }
-            }
-        </StoreContext.Consumer>
-    )
-
-}*/
-
 //функции возвращающие объект 1(данные из стейта в пропсы) и объект 2(диспатчи "коллбэки")
 let mapStateToProps = (state) => {    //1об mapStateToProps -замапить стейт на пропсы, тут state = props.store.getState().dialogsPage все само в state
     return {

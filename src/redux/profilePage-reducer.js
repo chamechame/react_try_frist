@@ -11,7 +11,6 @@ let initialState = {
 };
 
 const profilePageReducer = (state = initialState, action) => {
-    let stateCopy = state;
     
     switch (action.type) {
         case ADD_POST:
@@ -20,13 +19,16 @@ const profilePageReducer = (state = initialState, action) => {
                 message: state.postSvText,  /*тянет текст из postSvText*/
                 likesCount: 0
             };
-            state.postsDt.push(newPost); /*тут мы добавляем в массив данные*/
-            state.postSvText = ''; /* обнуляем видимое поле после добавления*/
-            return state;
-
+            return  {
+                ...state,
+                postsDt: [...state.postsDt, newPost], // тут мы добавляем в массив данные
+                postSvText: ''  /* обнуляем видимое поле после добавления*/
+            };
         case UPD_NEW_POST_TEXT:
-            state.postSvText = action.newText;    /* текст с  postSvText и передает в MyPost*/
-            return state;
+            return {
+                ...state,
+                postSvText: action.newText  //* текст с  postSvText и передает в MyPost*/
+            }
         default:    //если ничего в action не найдется то он просто по default вернет стейт.
             return state;
     }

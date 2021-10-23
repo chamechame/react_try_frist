@@ -13,6 +13,6 @@ let reducers = combineReducers({
 
 let store = createStore(reducers); /*автоматически createStore создает внутри себя state
 у которого есть три profilePage dialogsPage sidebar свойства*/
-
+window.store = store;
 
 export default store;
