@@ -4,32 +4,7 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {   //стейт часть
 
-    users: [
-        {
-            id: 1,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRr0YlatAy-hrNCQjzZ7fqDzNiXt7HGmzVaA&usqp=CAU',
-            followed: true,
-            fullName: 'Dimych',
-            status: 'Im am a bosS',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 2,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRr0YlatAy-hrNCQjzZ7fqDzNiXt7HGmzVaA&usqp=CAU',
-            followed: false,
-            fullName: 'Sasha',
-            status: 'Im am a bosS to',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: 3,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRr0YlatAy-hrNCQjzZ7fqDzNiXt7HGmzVaA&usqp=CAU',
-            followed: true,
-            fullName: 'Vasya',
-            status: 'Im am a bosS too!',
-            location: {city: 'Kiev', country: 'Ukraine'}
-        }
-    ]
+    users: []
 
 };
 
