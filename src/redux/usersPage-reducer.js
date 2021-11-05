@@ -9,7 +9,7 @@ let initialState = {   //стейт часть
     users: [ ],
     pageSize: 5,  //размер стр
     totalUsersCount: 0,  //количество юзеров общее
-    currentPage: 2      //страница текущая
+    currentPage: 1      //страница текущая
 
 };
 
