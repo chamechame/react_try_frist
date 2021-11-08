@@ -3,14 +3,16 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+
 
 let initialState = {   //стейт часть
 
     users: [ ],
     pageSize: 5,  //размер стр
     totalUsersCount: 0,  //количество юзеров общее
-    currentPage: 1      //страница текущая
-
+    currentPage: 1,      //страница текущая
+    isFetching: false
 };
 
 const userPageReducer = (state = initialState, action) => {
@@ -45,7 +47,9 @@ const userPageReducer = (state = initialState, action) => {
         }
         case SET_TOTAL_USERS_COUNT: { //меняем при нажатии страницу
             return {...state, totalUsersCount: action.count}
-
+        }
+        case TOGGLE_IS_FETCHING: { //меняем при нажатии страницу
+            return {...state, isFetching: action.isFetching}
         }
 
 
@@ -60,5 +64,7 @@ export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})  //unfollowAC a
 export const setUserAC = (users) => ({type: SET_USERS, users})
 export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count:totalUsersCount})
+export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+
 
 export default userPageReducer;
