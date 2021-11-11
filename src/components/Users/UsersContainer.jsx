@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setUserAC,
-    setUsersTotalCountAC,
-    toggleIsFetchingAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setUser,
+    setUsersTotalCount,
+    toggleIsFetching,
+    unfollow
 } from "../../redux/usersPage-reducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -14,23 +14,20 @@ import preloader from "../../assets/images/circleloading.svg";
 import PreLoader from "../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component{
-    /*    constructor(props) { //нет смысла указывать
-            super(props);
-        }*/
     componentDidMount() {
-        this.props.toggleIsFetchingAC(true);
+        this.props.toggleIsFetching(true); // загрузка
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => { //Get запрос, как приходит ответ, так идет выполнение response
-            this.props.toggleIsFetchingAC(false);
-            this.props.setUsers(response.data.items);        // колл бэк на получение data.items (придет в качестве ответа от сервера. на функцию response
-            this.props.setTotalUsersCount(response.data.totalCount);
+            this.props.toggleIsFetching(false);
+            this.props.setUser(response.data.items);        // колл бэк на получение data.items (придет в качестве ответа от сервера. на функцию response
+            this.props.setUsersTotalCount(response.data.totalCount);
         });
     }
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetchingAC(true);
+        this.props.toggleIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => { //Get запрос, как приходит ответ, так идет выполнение response
-            this.props.toggleIsFetchingAC(false);
-            this.props.setUsers(response.data.items);        // колл бэк на получение data.items (придет в качестве ответа от сервера. на функцию response
+            this.props.toggleIsFetching(false);
+            this.props.setUser(response.data.items);        // колл бэк на получение data.items (придет в качестве ответа от сервера. на функцию response
         });
     }
 
@@ -61,7 +58,7 @@ let mapStateToProps = (state) => { //принимает весь стейт це
     }
 }
 
-let mapDispatchToProps = (dispatch) =>{  //для передачи через пропсы дочерней презент. компоненте коллБэки
+/* let mapDispatchToProps = (dispatch) =>{  //для передачи через пропсы дочерней презент. компоненте коллБэки
     return {                        //с помощью dispatch тупая компонента общается с UserContainer
         follow: (userId) => {
             dispatch(followAC(userId));
@@ -81,11 +78,17 @@ let mapDispatchToProps = (dispatch) =>{  //для передачи через п
         toggleIsFetchingAC: (isFetching) => {
             dispatch(toggleIsFetchingAC(isFetching));   //подключаются AC с usersPage-reducer тут диспачим вызов AC
         }
-
-
     }
-}
+}*/
 
-const UserContainer =  connect (mapStateToProps, mapDispatchToProps) (UsersContainer);
 
-export default UserContainer;
+
+export default  connect (mapStateToProps, { //диспатчим автоматически
+    follow,
+    unfollow,
+    setUser,
+    setCurrentPage,
+    setUsersTotalCount,
+    toggleIsFetching
+
+    }) (UsersContainer);

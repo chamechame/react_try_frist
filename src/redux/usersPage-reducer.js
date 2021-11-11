@@ -51,20 +51,18 @@ const userPageReducer = (state = initialState, action) => {
         case TOGGLE_IS_FETCHING: { //меняем при нажатии страницу
             return {...state, isFetching: action.isFetching}
         }
-
-
         default:    //если ничего в action не найдется то он просто по default вернет стейт.
             return state;
 
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId}) //followAC actionCreation
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})  //unfollowAC actionCreation
-export const setUserAC = (users) => ({type: SET_USERS, users})
-export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count:totalUsersCount})
-export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const follow = (userId) => ({type: FOLLOW, userId}) //followAC actionCreation тут Акшн креэйторы
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})  //unfollowAC actionCreation
+export const setUser = (users) => ({type: SET_USERS, users})
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count:totalUsersCount})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 
 export default userPageReducer;
