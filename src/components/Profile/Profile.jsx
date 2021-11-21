@@ -9,7 +9,7 @@ const Profile = (props) => {
 
     return (
         <div className={s.profileItem}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer />
 
           {/* помечаем в Профайле в виде параметров <MyPosts postsDt и отправляем дальше в MyPosts*/}
