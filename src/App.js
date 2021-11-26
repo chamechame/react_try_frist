@@ -18,16 +18,14 @@ const App = (props) => {
             <Navbar/>
            <FriendsBarContainer />  {/*state={props.state.sidebar}*/}
             <div class='app-wrapper-content'>
-                <Route path='/Dialogs' render={() => <DialogsContainer />}/> {/*store={props.store}*/}
-                <Route path='/Profile' render={() => <ProfileContainer />}/>   {/* store={props.store}*/}
-                <Route path='/Users' render={() => <UsersContainer />}/>
-                <Route path='/News' render={() => <News />}/>
-                <Route path='/Musics' render={() => <Musics />}/>
-                <Route path='/Settings' render={() => <Settings />}/>
-
+                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
+                <Route path='/users' render={() => <UsersContainer />}/>
+                <Route path='/news' render={() => <News />}/>
+                <Route path='/musics' render={() => <Musics />}/>
+                <Route path='/settings' render={() => <Settings />}/>
             </div>
         </div>
-        /*     Эта часть отображается везде */
     )
 
 }
