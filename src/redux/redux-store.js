@@ -3,6 +3,7 @@ import profilePageReducer from "./profilePage-reducer";
 import dialogsPageReducer from "./dialogsPage-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import userPageReducer from "./usersPage-reducer";
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
 /* объект у которого 3 свойства или три редьюсера, по сути каждое свойство
@@ -10,7 +11,8 @@ let reducers = combineReducers({
     profilePage: profilePageReducer,
     dialogsPage: dialogsPageReducer,
     sidebar: sidebarReducer,
-    usersPage: userPageReducer
+    usersPage: userPageReducer,
+    auth: authReducer
 }); //объект воспринимать как State
 
 let store = createStore(reducers); /*автоматически createStore создает внутри себя state
