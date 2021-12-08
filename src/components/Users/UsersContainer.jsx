@@ -4,7 +4,7 @@ import {
     follow,
     setCurrentPage,
     setUser,
-    setUsersTotalCount,
+    setUsersTotalCount, toggleFollowingProgress,
     toggleIsFetching,
     unfollow
 } from "../../redux/usersPage-reducer";
@@ -43,6 +43,8 @@ class UsersContainer extends React.Component{
             unfollow={this.props.unfollow}
             follow={this.props.follow}
             isFetching={this.props.isFetching}
+            toggleFollowingProgress={this.props.toggleFollowingProgress}
+            followingInProgress={this.props.followingInProgress}
         /> </>
     }
 }
@@ -53,7 +55,8 @@ let mapStateToProps = (state) => { //принимает весь стейт це
         pageSize: state.usersPage.pageSize, //  придут свойство users, значения которого пользователи из state.usersPage.users
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -63,6 +66,6 @@ export default  connect (mapStateToProps, { //диспатчим автомат�
     setUser,
     setCurrentPage,
     setUsersTotalCount,
-    toggleIsFetching
-
+    toggleIsFetching,
+    toggleFollowingProgress
     }) (UsersContainer);

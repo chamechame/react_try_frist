@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 
 let initialState = {   //стейт часть
@@ -12,7 +13,8 @@ let initialState = {   //стейт часть
     pageSize: 5,  //размер стр
     totalUsersCount: 0,  //количество юзеров общее
     currentPage: 1,      //страница текущая
-    isFetching: false
+    isFetching: true,
+    followingInProgress: []
 };
 
 const userPageReducer = (state = initialState, action) => {
@@ -51,6 +53,14 @@ const userPageReducer = (state = initialState, action) => {
         case TOGGLE_IS_FETCHING: { //меняем при нажатии страницу
             return {...state, isFetching: action.isFetching}
         }
+        case TOGGLE_IS_FOLLOWING_PROGRESS: { //меняем при нажатии страницу
+            return {
+                ...state,
+               followingInProgress: action.isFetching
+                   ? [...state.followingInProgress, action.userId]
+                   : state.followingInProgress.filter(id => id != action.userId)
+            }
+        }
         default:    //если ничего в action не найдется то он просто по default вернет стейт.
             return state;
 
@@ -63,6 +73,7 @@ export const setUser = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count:totalUsersCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
 
 
 export default userPageReducer;
